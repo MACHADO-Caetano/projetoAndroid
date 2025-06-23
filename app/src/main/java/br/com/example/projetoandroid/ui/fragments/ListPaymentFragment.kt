@@ -1,0 +1,50 @@
+package br.com.example.projetoandroid.ui.fragments
+
+import br.com.example.projetoandroid.data.model.Payment
+import br.com.example.projetoandroid.ui.adapter.PaymentAdapter
+
+class ListPaymentFragment : Fragment() {
+    private lateinit var binding: FragmentListPaymentBinding
+    private lateinit var adapter: PaymentAdapter
+    private val paymentViewModel: PaymentViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        paymentViewModel.paymentlist.observe(viewLifecycleOwner) { payment ->
+            adapter.submitList(payment.toMutableList())
+        }
+
+        binding = FragmentListPaymentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val rc = binding.recyclerView
+        adapter = PaymentAdapter(
+            onDelete = { payment ->
+                paymentViewModel.removePayment(payment)
+            },
+            onDetails = { payment ->
+                goToDetails(payment = payment)
+            },
+            onCheck = { payment ->
+                paymentViewModel.checkPayment(paymentId = payment.idPayment, isCheck = !payment.check)
+            }
+        )
+        rc.adapter = adapter
+
+        binding.fabAdd.setOnClickListener {
+            val action = ListPaymentFragmentDirections.actionListPaymentFragmentToFormPaymentFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun goToDetails(payment: Payment) {
+        val action = ListPaymentFragmentDirections.actionListPaymentFragmentToDetailsPaymentFragment(payment)
+        findNavController().navigate(action)
+    }
+}

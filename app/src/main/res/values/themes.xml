@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.ProjetoAndroid" parent="Base.Theme.ProjetoAndroid" />
+    <style name="Theme.ProjetoAndroid.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.ProjetoAndroid.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.ProjetoAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

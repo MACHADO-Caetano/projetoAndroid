@@ -1,20 +1,27 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.androidx.navigation.safe.args)
+    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "br.com.example.projetoandroid"
+    namespace = "com.example.recyclerviewaula"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "br.com.example.projetoandroid"
+        applicationId = "com.example.recyclerviewaula"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -36,7 +43,18 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.room.runtime)
+    implementation(libs.androidx.room.common.jvm)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    ksp(libs.room.compiler)
+    annotationProcessor(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.serialization)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
