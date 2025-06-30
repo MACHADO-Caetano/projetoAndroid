@@ -1,11 +1,11 @@
 package br.com.example.projetoandroid.data.mapper
 
+import br.com.example.projetoandroid.data.local.entity.PaymentEntity
 import br.com.example.projetoandroid.data.model.Payment
 
-class PaymentMapper {
-    fun Payment.convertToEntity() =
-        PaymentEntity(
-            descriptionPayment = this.descriptionPayment,
+fun Payment.convertToEntity() =
+    PaymentEntity(
+            paymentDescription = this.descriptionPayment,
             amountPayment = this.amountPayment,
             datePayment = this.datePayment,
             openedBy = this.openedBy,
@@ -14,11 +14,10 @@ class PaymentMapper {
 
     fun PaymentEntity.convertToModel() =
         Payment(
-            idPayment = this.idPayment,
-            descriptionPayment = this.descriptionPayment,
+            idPayment = this.id,
+            descriptionPayment = this.paymentDescription,
             amountPayment = this.amountPayment,
             datePayment = this.datePayment,
             openedBy = this.openedBy,
-            isCheck = this.check
+            check = this.isCheck
         )
-}

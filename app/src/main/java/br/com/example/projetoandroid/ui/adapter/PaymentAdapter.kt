@@ -1,8 +1,10 @@
 package br.com.example.projetoandroid.ui.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import br.com.example.projetoandroid.data.model.Payment
+import com.example.recyclerviewaula.databinding.PaymentItemListBinding
 
 class PaymentAdapter(
     private val onDelete: (Payment) -> Unit,

@@ -2,6 +2,7 @@ package br.com.example.projetoandroid.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import br.com.example.projetoandroid.data.model.Payment
+import com.example.recyclerviewaula.databinding.PaymentItemListBinding
 
 class PaymentViewHolder(
     private val binding: PaymentItemListBinding,
@@ -10,7 +11,7 @@ class PaymentViewHolder(
     private val onCheck: (Payment) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(payment: Payment) {
-        binding.payment = Payment
+        binding.payment = payment
 
         binding.actionDelete.setOnClickListener {
             onDelete(payment)

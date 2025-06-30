@@ -5,7 +5,7 @@ import br.com.example.projetoandroid.data.model.Payment
 
 class PaymentDiffCallback : DiffUtil.ItemCallback<Payment>() {
     override fun areItemsTheSame(oldItem: Payment, newItem: Payment): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.idPayment == newItem.idPayment
     }
 
     override fun areContentsTheSame(oldItem: Payment, newItem: Payment): Boolean {
