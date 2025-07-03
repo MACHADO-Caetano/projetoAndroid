@@ -1,7 +1,16 @@
 package br.com.example.projetoandroid.ui.fragments
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.example.projetoandroid.data.model.Payment
+import br.com.example.projetoandroid.databinding.FragmentListPaymentBinding
 import br.com.example.projetoandroid.ui.adapter.PaymentAdapter
+import br.com.example.projetoandroid.ui.viewmodel.PaymentViewModel
 
 class ListPaymentFragment : Fragment() {
     private lateinit var binding: FragmentListPaymentBinding

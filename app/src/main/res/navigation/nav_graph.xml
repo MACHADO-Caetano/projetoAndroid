@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph" />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listPaymentFragment">
+
+    <fragment
+        android:id="@+id/listPaymentFragment"
+        android:name="br.com.example.projetoandroid.ui.fragments.ListPaymentFragment"
+        android:label="Payments List AS"
+        tools:layout="@layout/fragment_list_payment">
+        <action
+            android:id="@+id/action_listPaymentFragment_to_detailsPaymentFragment"
+            app:destination="@id/detailsPaymentFragment" />
+        <action
+            android:id="@+id/action_listPaymentFragment_to_formPaymentFragment"
+            app:destination="@id/formPaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsPaymentFragment"
+        android:name="br.com.example.projetoandroid.ui.fragments.DetailsPaymentFragment"
+        android:label="Details Payments">
+        <action
+            android:id="@+id/action_listPaymentFragment_to_detailsPaymentFragment"
+            app:destination="@id/listPaymentFragment" />
+        <argument
+            android:name="payment"
+            app:argType="br.com.example.projetoandroid.data.model.Payment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formPaymentFragment"
+        android:name="br.com.example.projetoandroid.ui.fragments.FormPaymentFragment"
+        android:label="Payments" >
+        <action
+            android:id="@+id/action_formPaymentFragment_to_listPaymentFragment"
+            app:destination="@id/listPaymentFragment" />
+    </fragment>
+</navigation>

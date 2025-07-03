@@ -3,14 +3,13 @@
     <data>
         <variable
             name="payment"
-            type="br.com.example.projetoandroid.data.model.Payment" />
+            type="br.com.example.projetoandroid.data.model.Payment"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardPayment"
@@ -64,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:text="@{}"
+                    android:text="@{String.valueOf(payment.amountPayment)}"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -72,7 +71,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/paymentDescription"
                     tools:text="Amount" />
-
 
                 <TextView
                     android:id="@+id/createdAt"

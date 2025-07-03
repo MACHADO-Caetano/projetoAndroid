@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.recyclerviewaula.databinding.FragmentDetailsPaymentBinding
+import br.com.example.projetoandroid.databinding.FragmentDetailsPaymentBinding
+import androidx.navigation.fragment.navArgs
+
 
 class DetailsPaymentFragment : Fragment() {
     private lateinit var binding: FragmentDetailsPaymentBinding

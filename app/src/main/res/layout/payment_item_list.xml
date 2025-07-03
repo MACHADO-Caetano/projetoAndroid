@@ -67,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:text="@{}"
+                    android:text="@{String.valueOf(payment.amountPayment)}"
                     android:textAlignment="textStart"
                     android:textSize="22sp"
                     android:textStyle="bold"

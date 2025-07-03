@@ -5,6 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import br.com.example.projetoandroid.data.model.Payment
+import br.com.example.projetoandroid.databinding.FragmentFormPaymentBinding
+import br.com.example.projetoandroid.ui.viewmodel.PaymentViewModel
 
 class FormPaymentFragment : Fragment() {
     private lateinit var binding: FragmentFormPaymentBinding
@@ -28,8 +33,9 @@ class FormPaymentFragment : Fragment() {
         binding.addButton.setOnClickListener {
             val payment = Payment(
                 descriptionPayment = binding.txvDescription.text.toString(),
-                amountPayment = binding.txvAmount.text.toString(),
-                openedBy = binding.txvUser.text.toString()
+                amountPayment = binding.txvAmount.toString().toDoubleOrNull() ?: 0.0,
+                openedBy = binding.txvUser.text.toString(),
+                datePayment = binding.txvDate.text.toString()
             )
 
             paymentViewModel.addPayment(payment)

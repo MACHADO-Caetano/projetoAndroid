@@ -5,8 +5,8 @@ import java.io.Serializable
 data class Payment (
         val idPayment: Int = 0,
         val descriptionPayment: String = "",
-        val amountPayment: Double = 0.0,
+        val amountPayment: Double,
         val check: Boolean = false,
-        val datePayment: String  = "xx/xx/xxxx",
+        val datePayment: String,
         val openedBy: String = ""
 ) : Serializable

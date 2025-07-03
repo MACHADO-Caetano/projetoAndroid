@@ -3,10 +3,14 @@ package br.com.example.projetoandroid.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import br.com.example.projetoandroid.data.PaymentRepository
 import br.com.example.projetoandroid.data.local.PaymentLocalDataSource
 import br.com.example.projetoandroid.data.local.database.AppDatabase
 import br.com.example.projetoandroid.data.model.Payment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class PaymentViewModel(application: Application) : AndroidViewModel(application) {
     private val paymentDao = AppDatabase.getInstance(application).paymentDao()

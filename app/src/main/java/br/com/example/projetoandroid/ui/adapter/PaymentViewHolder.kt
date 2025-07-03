@@ -2,7 +2,7 @@ package br.com.example.projetoandroid.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import br.com.example.projetoandroid.data.model.Payment
-import com.example.recyclerviewaula.databinding.PaymentItemListBinding
+import br.com.example.projetoandroid.databinding.PaymentItemListBinding
 
 class PaymentViewHolder(
     private val binding: PaymentItemListBinding,
