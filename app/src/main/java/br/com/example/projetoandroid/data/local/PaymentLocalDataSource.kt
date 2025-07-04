@@ -11,16 +11,15 @@ class PaymentLocalDataSource(private val paymentDao: PaymentDao) {
         paymentDao.insert(payment)
     }
 
-    suspend fun deletePayment(user: PaymentEntity) {
-        paymentDao.delete(user)
+    suspend fun deletePayment(payment: PaymentEntity) {
+        paymentDao.delete(payment)
     }
 
-    suspend fun checkPayment(paymentId: Int, isCheck: Boolean) {
-        paymentDao.checkPayment(paymentId, !isCheck)
+    suspend fun checkPayment(paymentId: Long, isCheck: Boolean) {
+        paymentDao.checkPayment(paymentId, isCheck)
     }
 
-    suspend fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String) {
-        paymentDao.updatePayment(idPayment, descriptionPayment, amountPayment, datePayment, openedBy)
+    suspend fun updatePayment(payment: PaymentEntity) {
+        paymentDao.update(payment)
     }
-
 }

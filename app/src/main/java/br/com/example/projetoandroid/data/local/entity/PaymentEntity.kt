@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "payments")
 data class PaymentEntity(
     @PrimaryKey(autoGenerate = true)
-
-    val id: Int = 0,
+    val id: Long = 0L,
     val paymentDescription: String = "",
     val amountPayment: Double = 0.0,
     val datePayment: String = "xx/xx/xxx",

@@ -41,7 +41,7 @@ class ListPaymentFragment : Fragment() {
                 goToDetails(payment = payment)
             },
             onCheck = { payment ->
-                paymentViewModel.checkPayment(paymentId = payment.idPayment, isCheck = !payment.check)
+                paymentViewModel.checkPayment(paymentId = payment.idPayment, isCheck = !payment.check) // <--- **idPayment deve ser Long**
             },
             onUpdate = { payment ->
                 editPayment(payment = payment)
@@ -50,7 +50,7 @@ class ListPaymentFragment : Fragment() {
         rc.adapter = adapter
 
         binding.fabAdd.setOnClickListener {
-            val action = ListPaymentFragmentDirections.actionListPaymentFragmentToFormPaymentFragment()
+            val action = ListPaymentFragmentDirections.actionListPaymentFragmentToFormPaymentFragment(null as Payment?)
             findNavController().navigate(action)
         }
     }

@@ -1,6 +1,5 @@
 package br.com.example.projetoandroid.data
 
-
 import br.com.example.projetoandroid.data.local.PaymentLocalDataSource
 import br.com.example.projetoandroid.data.mapper.convertToEntity
 import br.com.example.projetoandroid.data.mapper.convertToModel
@@ -13,6 +12,6 @@ class PaymentRepository(private val dataSource: PaymentLocalDataSource) {
 
     suspend fun remove(payment: Payment) = dataSource.deletePayment(payment.convertToEntity())
     suspend fun add(payment: Payment) = dataSource.addPayment(payment.convertToEntity())
-    suspend fun checkPayment(paymentId: Int, isCheck: Boolean) = dataSource.checkPayment(paymentId, isCheck)
-    suspend fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String) = dataSource.updatePayment(idPayment, descriptionPayment, amountPayment, datePayment, openedBy)
+    suspend fun checkPayment(paymentId: Long, isCheck: Boolean) = dataSource.checkPayment(paymentId, isCheck) // <--- **paymentId deve ser Long**
+    suspend fun updatePayment(payment: Payment) = dataSource.updatePayment(payment.convertToEntity())
 }

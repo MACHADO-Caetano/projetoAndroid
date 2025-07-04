@@ -3,7 +3,7 @@ package br.com.example.projetoandroid.data.model
 import java.io.Serializable
 
 data class Payment (
-        val idPayment: Int = 0,
+        val idPayment: Long = 0L,
         val descriptionPayment: String = "",
         val amountPayment: Double,
         val check: Boolean = false,

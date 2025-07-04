@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.example.projetoandroid.data.model.Payment
 import br.com.example.projetoandroid.databinding.FragmentFormPaymentBinding
 import br.com.example.projetoandroid.ui.viewmodel.PaymentViewModel
@@ -14,6 +15,7 @@ import br.com.example.projetoandroid.ui.viewmodel.PaymentViewModel
 class FormPaymentFragment : Fragment() {
     private lateinit var binding: FragmentFormPaymentBinding
     private val paymentViewModel: PaymentViewModel by viewModels()
+    private val args: FormPaymentFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,28 +32,40 @@ class FormPaymentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonForm.setOnClickListener {
-            val payment = Payment(
-                descriptionPayment = binding.txvDescription.text.toString(),
-                amountPayment = binding.txvAmount.text.toString().toDouble(),
-                openedBy = binding.txvUser.text.toString(),
-                datePayment = binding.txvDate.text.toString()
-            )
+        val receivedPayment = args.payment
 
-            paymentViewModel.addPayment(payment)
-            val action = FormPaymentFragmentDirections.actionFormPaymentFragmentToListPaymentFragment()
-            findNavController().navigate(action)
+        receivedPayment?.let { payment ->
+            binding.txvDescription.setText(payment.descriptionPayment)
+            binding.txvAmount.setText(payment.amountPayment.toString())
+            binding.txvUser.setText(payment.openedBy)
+            binding.txvDate.setText(payment.datePayment)
+            binding.buttonForm.text = "Atualizar Pagamento"
         }
 
         binding.buttonForm.setOnClickListener {
-            val payment = Payment(
-                descriptionPayment = binding.txvDescription.text.toString(),
-                amountPayment = binding.txvAmount.text.toString().toDouble(),
-                openedBy = binding.txvUser.text.toString(),
-                datePayment = binding.txvDate.text.toString()
-            )
+            val description = binding.txvDescription.text.toString()
+            val amount = binding.txvAmount.text.toString().toDoubleOrNull() ?: 0.0
+            val user = binding.txvUser.text.toString()
+            val date = binding.txvDate.text.toString()
 
-            paymentViewModel.updatePayment(payment)
+            if (receivedPayment == null) {
+                val newPayment = Payment(
+                    descriptionPayment = description,
+                    amountPayment = amount,
+                    openedBy = user,
+                    datePayment = date
+                )
+                paymentViewModel.addPayment(newPayment)
+            } else {
+                val updatedPayment = receivedPayment.copy(
+                    descriptionPayment = description,
+                    amountPayment = amount,
+                    openedBy = user,
+                    datePayment = date
+                )
+                paymentViewModel.updatePayment(updatedPayment)
+            }
+
             val action = FormPaymentFragmentDirections.actionFormPaymentFragmentToListPaymentFragment()
             findNavController().navigate(action)
         }

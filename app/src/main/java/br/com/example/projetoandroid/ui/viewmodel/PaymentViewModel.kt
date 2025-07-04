@@ -31,13 +31,11 @@ class PaymentViewModel(application: Application) : AndroidViewModel(application)
         repository.add(payment)
     }
 
-    fun checkPayment(paymentId: Int, isCheck: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+    fun checkPayment(paymentId: Long, isCheck: Boolean) = viewModelScope.launch(Dispatchers.IO) { // <--- **paymentId deve ser Long**
         repository.checkPayment(paymentId, isCheck)
     }
 
-    fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String) = viewModelScope.launch(Dispatchers.IO)
-    {
-        repository.updatePayment(idPayment, descriptionPayment, amountPayment, datePayment, openedBy)
+    fun updatePayment(payment: Payment) = viewModelScope.launch(Dispatchers.IO) {
+        repository.updatePayment(payment)
     }
-
 }
