@@ -5,6 +5,7 @@ import br.com.example.projetoandroid.data.model.Payment
 
 fun Payment.convertToEntity() =
     PaymentEntity(
+            id = this.idPayment,
             paymentDescription = this.descriptionPayment,
             amountPayment = this.amountPayment,
             datePayment = this.datePayment,

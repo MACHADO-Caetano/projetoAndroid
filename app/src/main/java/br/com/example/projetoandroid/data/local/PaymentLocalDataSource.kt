@@ -2,7 +2,6 @@ package br.com.example.projetoandroid.data.local
 
 import br.com.example.projetoandroid.data.local.dao.PaymentDao
 import br.com.example.projetoandroid.data.local.entity.PaymentEntity
-import br.com.example.projetoandroid.data.model.Payment
 import kotlinx.coroutines.flow.Flow
 
 class PaymentLocalDataSource(private val paymentDao: PaymentDao) {

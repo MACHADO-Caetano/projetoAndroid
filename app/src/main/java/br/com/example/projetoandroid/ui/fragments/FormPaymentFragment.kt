@@ -33,7 +33,7 @@ class FormPaymentFragment : Fragment() {
         binding.addButton.setOnClickListener {
             val payment = Payment(
                 descriptionPayment = binding.txvDescription.text.toString(),
-                amountPayment = binding.txvAmount.toString().toDoubleOrNull() ?: 0.0,
+                amountPayment = binding.txvAmount.text.toString().toDouble(),
                 openedBy = binding.txvUser.text.toString(),
                 datePayment = binding.txvDate.text.toString()
             )
