@@ -30,7 +30,7 @@ class FormPaymentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.addButton.setOnClickListener {
+        binding.buttonForm.setOnClickListener {
             val payment = Payment(
                 descriptionPayment = binding.txvDescription.text.toString(),
                 amountPayment = binding.txvAmount.text.toString().toDouble(),
@@ -39,6 +39,19 @@ class FormPaymentFragment : Fragment() {
             )
 
             paymentViewModel.addPayment(payment)
+            val action = FormPaymentFragmentDirections.actionFormPaymentFragmentToListPaymentFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.buttonForm.setOnClickListener {
+            val payment = Payment(
+                descriptionPayment = binding.txvDescription.text.toString(),
+                amountPayment = binding.txvAmount.text.toString().toDouble(),
+                openedBy = binding.txvUser.text.toString(),
+                datePayment = binding.txvDate.text.toString()
+            )
+
+            paymentViewModel.updatePayment(payment)
             val action = FormPaymentFragmentDirections.actionFormPaymentFragmentToListPaymentFragment()
             findNavController().navigate(action)
         }

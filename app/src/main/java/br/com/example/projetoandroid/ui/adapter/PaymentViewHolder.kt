@@ -8,7 +8,8 @@ class PaymentViewHolder(
     private val binding: PaymentItemListBinding,
     private val onDelete: (Payment) -> Unit,
     private val onDetails: (Payment) -> Unit,
-    private val onCheck: (Payment) -> Unit
+    private val onCheck: (Payment) -> Unit,
+    private val onUpdate: (Payment) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(payment: Payment) {
         binding.payment = payment
@@ -19,6 +20,9 @@ class PaymentViewHolder(
 
         binding.actionDetails.setOnClickListener {
             onDetails(payment)
+        }
+        binding.actionUpdate.setOnClickListener {
+            onUpdate(payment)
         }
 
         binding.paymentCheck.addOnCheckedStateChangedListener { check, _ ->

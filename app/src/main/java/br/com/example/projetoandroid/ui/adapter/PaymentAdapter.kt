@@ -9,7 +9,8 @@ import br.com.example.projetoandroid.databinding.PaymentItemListBinding
 class PaymentAdapter(
     private val onDelete: (Payment) -> Unit,
     private val onDetails: (Payment) -> Unit,
-    private val onCheck: (Payment) -> Unit
+    private val onCheck: (Payment) -> Unit,
+    private val onUpdate: (Payment) -> Unit
 ) : ListAdapter<Payment, PaymentViewHolder>(PaymentDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentViewHolder {
         val binding =
@@ -18,7 +19,8 @@ class PaymentAdapter(
             binding = binding,
             onDelete = onDelete,
             onDetails = onDetails,
-            onCheck = onCheck
+            onCheck = onCheck,
+            onUpdate = onUpdate
         )
     }
 

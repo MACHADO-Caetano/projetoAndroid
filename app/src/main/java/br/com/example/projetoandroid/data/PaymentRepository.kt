@@ -14,4 +14,5 @@ class PaymentRepository(private val dataSource: PaymentLocalDataSource) {
     suspend fun remove(payment: Payment) = dataSource.deletePayment(payment.convertToEntity())
     suspend fun add(payment: Payment) = dataSource.addPayment(payment.convertToEntity())
     suspend fun checkPayment(paymentId: Int, isCheck: Boolean) = dataSource.checkPayment(paymentId, isCheck)
+    suspend fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String) = dataSource.updatePayment(idPayment, descriptionPayment, amountPayment, datePayment, openedBy)
 }

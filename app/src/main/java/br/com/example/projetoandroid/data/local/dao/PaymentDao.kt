@@ -19,6 +19,9 @@ interface PaymentDao {
     @Query("Update payments SET isCheck = :isCheck where id = :paymentId")
     suspend fun checkPayment(paymentId: Int, isCheck: Boolean)
 
+    @Query("Update payments SET paymentDescription = :descriptionPayment, amountPayment = :amountPayment, datePayment = :datePayment, openedBy = :openedBy  where id = :idPayment")
+    suspend fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String)
+
     @Delete
     suspend fun delete(user: PaymentEntity)
 }

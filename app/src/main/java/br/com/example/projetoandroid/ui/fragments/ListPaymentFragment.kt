@@ -42,6 +42,9 @@ class ListPaymentFragment : Fragment() {
             },
             onCheck = { payment ->
                 paymentViewModel.checkPayment(paymentId = payment.idPayment, isCheck = !payment.check)
+            },
+            onUpdate = { payment ->
+                editPayment(payment = payment)
             }
         )
         rc.adapter = adapter
@@ -54,6 +57,11 @@ class ListPaymentFragment : Fragment() {
 
     private fun goToDetails(payment: Payment) {
         val action = ListPaymentFragmentDirections.actionListPaymentFragmentToDetailsPaymentFragment(payment)
+        findNavController().navigate(action)
+    }
+
+    private fun editPayment(payment: Payment){
+        val action = ListPaymentFragmentDirections.actionListPaymentFragmentToFormPaymentFragment(payment)
         findNavController().navigate(action)
     }
 }

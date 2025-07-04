@@ -34,4 +34,10 @@ class PaymentViewModel(application: Application) : AndroidViewModel(application)
     fun checkPayment(paymentId: Int, isCheck: Boolean) = viewModelScope.launch(Dispatchers.IO) {
         repository.checkPayment(paymentId, isCheck)
     }
+
+    fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String) = viewModelScope.launch(Dispatchers.IO)
+    {
+        repository.updatePayment(idPayment, descriptionPayment, amountPayment, datePayment, openedBy)
+    }
+
 }

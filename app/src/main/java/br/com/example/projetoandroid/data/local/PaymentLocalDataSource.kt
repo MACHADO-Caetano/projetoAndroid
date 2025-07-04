@@ -18,4 +18,9 @@ class PaymentLocalDataSource(private val paymentDao: PaymentDao) {
     suspend fun checkPayment(paymentId: Int, isCheck: Boolean) {
         paymentDao.checkPayment(paymentId, !isCheck)
     }
+
+    suspend fun updatePayment(idPayment: Int, descriptionPayment: String, amountPayment: Double, datePayment: String, openedBy: String) {
+        paymentDao.updatePayment(idPayment, descriptionPayment, amountPayment, datePayment, openedBy)
+    }
+
 }
