@@ -31,7 +31,7 @@ class PaymentViewModel(application: Application) : AndroidViewModel(application)
         repository.add(payment)
     }
 
-    fun checkPayment(paymentId: Long, isCheck: Boolean) = viewModelScope.launch(Dispatchers.IO) { // <--- **paymentId deve ser Long**
+    fun checkPayment(paymentId: Long, isCheck: Boolean) = viewModelScope.launch(Dispatchers.IO) {
         repository.checkPayment(paymentId, isCheck)
     }
 

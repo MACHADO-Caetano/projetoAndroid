@@ -15,6 +15,7 @@ import br.com.example.projetoandroid.ui.viewmodel.PaymentViewModel
 class FormPaymentFragment : Fragment() {
     private lateinit var binding: FragmentFormPaymentBinding
     private val paymentViewModel: PaymentViewModel by viewModels()
+    //A propriedade 'args' é inicializada usando 'navArgs()'.
     private val args: FormPaymentFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,7 @@ class FormPaymentFragment : Fragment() {
         binding = FragmentFormPaymentBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    // so é execudando quando for uma edição chamando seus campos ja preenchidos
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

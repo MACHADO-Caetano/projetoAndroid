@@ -41,15 +41,18 @@ class ListPaymentFragment : Fragment() {
                 goToDetails(payment = payment)
             },
             onCheck = { payment ->
-                paymentViewModel.checkPayment(paymentId = payment.idPayment, isCheck = !payment.check) // <--- **idPayment deve ser Long**
+                paymentViewModel.checkPayment(paymentId = payment.idPayment, isCheck = !payment.check)
             },
             onUpdate = { payment ->
+                //Este lambda agora chama a função 'editPayment'.
                 editPayment(payment = payment)
             }
         )
         rc.adapter = adapter
 
         binding.fabAdd.setOnClickListener {
+            // Isso indica ao FormPaymentFragment que ele deve operar no "modo de adição" (criando um novo pagamento),
+            // pois não há um pagamento existente para editar.
             val action = ListPaymentFragmentDirections.actionListPaymentFragmentToFormPaymentFragment(null as Payment?)
             findNavController().navigate(action)
         }
@@ -61,6 +64,7 @@ class ListPaymentFragment : Fragment() {
     }
 
     private fun editPayment(payment: Payment){
+        // Isso permite que o FormPaymentFragment preencha os campos com os dados existentes e saiba que deve atualizar, não adicionar.
         val action = ListPaymentFragmentDirections.actionListPaymentFragmentToFormPaymentFragment(payment)
         findNavController().navigate(action)
     }
